@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUDNode</title>
+</head>
+
+<body>
+
+    <h2> Editar registro </h2>
+    <% data.forEach(function(details) { %>
+        <form action="/edit/<%= details._id %>" method="POST">
+            <input type="text" value="<% details.filial%>" name="filial" placeholder="Filial">
+            <input type="text" value="<% details.nome%>" name="nome" placeholder="Nome">
+            <input type="text" value="<% details.sobrenome%>" name="sobrenome" placeholder="Sobrenome">
+            <input type="text" value="<% details.cpf%>" name="cpf" placeholder="Cpf">
+            <input type="text" value="<% details.cep%>" name="cep" placeholder="Cep">
+            <input type="text" value="<% details.cidade%>" name="cidade" placeholder="Cidade">
+            <input type="text" value="<% details.estado%>" name="estado" placeholder="Estado">
+            <input type="text" value="<% details.endereco%>" name="endereco" placeholder="Endereco">
+            <input type="text" value="<% details.funcao%>" name="funcao" placeholder="Funcao">
+            <input type="text" value="<% details.contato%>" name="contato" placeholder="Contato">
+            <br> />
+            <button> <a href="/show">Todos</a></button>
+            <button type="submit">Editar</button>
+        </form>
+        <% }) %>
+
+</body>
+
+</html>

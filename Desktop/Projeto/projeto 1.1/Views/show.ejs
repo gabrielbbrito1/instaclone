@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/CSS/Main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>My CRUD in NodeJS</title>
+</head>
+
+<body>
+
+    <h2>Registros
+        <h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>Nome</td>
+                        <td>Sobrenome</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(function(details) { %>
+                        <tr>
+                            <td>
+                                <%= details.filial%>
+                            </td>
+                            <td>
+                                <%= details.nome%>
+                            </td>
+                            <td>
+                                <%= details.sobrenome%>
+                            </td>
+                            <td>
+                                <%= details.cpf%>
+                            </td>
+                            <td>
+                                <%= details.cep%>
+                            </td>
+                            <td>
+                                <%= details.cidade%>
+                            </td>
+                            <td>
+                                <%= details.estado%>
+                            </td>
+                            <td>
+                                <%= details.endereco%>
+                            </td>
+                            <td>
+                                <%= details.funcao%>
+                            </td>
+                            <td>
+                                <%= details.contato%>
+                            </td>
+                            <td>
+                                <a href="/edit/<%= details._id %>">editar</a>
+                                <a href="/delete/<%= details._id %>">deletar</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+                <a href="/" class="btn btn-info add-new"><i class="fa fa-plus"></i> Novo funcionario</a>
+</body>
+
+</html>
