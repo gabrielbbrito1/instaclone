@@ -19,7 +19,7 @@ export default function Login(){
         setLoading(true);
         
         axios
-        .get(`https://5fc2a1819210060016869a4b.mockapi.io/users`)
+        .get('https://5fc9688a3c1c220016440c1b.mockapi.io/users')
         .then(response => {
           const data = response.data
           console.log(data)

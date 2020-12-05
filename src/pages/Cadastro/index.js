@@ -18,7 +18,7 @@ export default function Cadastro(){
         setLoading(true);
         
         axios
-        .post(`https://5fc2a1819210060016869a4b.mockapi.io/users`, {email,password})
+        .post('https://5fc9688a3c1c220016440c1b.mockapi.io/users', {email,password})
         .then(response => {
           const data = response.data
           console.log(data)
