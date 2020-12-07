@@ -78,6 +78,19 @@ export default function Cadastro(){
           <Text style={styles.submitText}>Cadastrar</Text>
 
         </TouchableOpacity>
+
+        <br/>    
+
+        <Text style={styles.textRegister}>  ────────────────────────────</Text>
+
+        <View style={styles.texto}>
+        <Text>Já tem uma conta? </Text>
+        <TouchableOpacity onPress ={()=>navigation.push('Login')}
+        > 
+        <Text style={styles.login}>Faça login</Text>
+        </TouchableOpacity>
+        </View>
+
     </View>
     </>}
 
@@ -88,20 +101,30 @@ export default function Cadastro(){
 const styles = StyleSheet.create({
     background:{
         flex:1,
+        backgroundColor:'#f7f7f7',
         alignItems: 'center',
         justifyContent:'center',
-        
-
     },
-    containerLogo:{
-        
-        
-        
+    texto:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
+    },
+    login:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#207af7',
+        textDecorationLine: 'underline',
+    },
+    textRegister:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#b8bab8',
     },
     
     logo:{
-        width:200,
-        height:65,
+        width:300,
+        height:89,
     },
     input:{
         width:300,

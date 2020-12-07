@@ -46,8 +46,15 @@ export default function Login(){
                 style={styles.logo}
                 source={require('../../../assets/Instagram-Logo.png')}
             />
-            
+
         </View>
+
+        <View style={styles.subTitulo}> 
+            <Text  style={styles.textSub}>Faça login para ver e compartilhar fotos e vídeos com seus amigos</Text>
+            </View> 
+
+        <br />    
+
         {loading ?
         <View>
             <Loading />
@@ -87,19 +94,28 @@ export default function Login(){
           <Text style={styles.submitText}>Entrar</Text>
 
         </TouchableOpacity>
-    </View>
-        
-        
-        <View style={styles.buttonContainer}>
-        
+       </View>
+
+       <br />
+
+       <View style={styles.esqueci}>
+            <Text>Esqueceu sua senha? </Text>
+            <Text style={{ color: '#207af7', textDecorationLine: 'underline' }}>Clique aqui</Text>
+       </View>     
+       <br/>
+       <br/>
+       <br/>    
+
+        <Text style={styles.textRegister}>────────────── OU ──────────────</Text>
+
+        <View style={styles.texto}>
+            <Text>Não tem uma conta? </Text>
         <TouchableOpacity
-          style={styles.btnSubmit}
           onPress ={()=>navigation.push('Cadastro')}
           > 
-          <Text style={styles.submitText}>Cadastro</Text>
-
+          <Text style={styles.cadastro}>Cadastre-se</Text>
         </TouchableOpacity>
-    </View>
+       </View>
     </>}
 
         </KeyboardAvoidingView>
@@ -109,20 +125,39 @@ export default function Login(){
 const styles = StyleSheet.create({
     background:{
         flex:1,
+        backgroundColor:'#f7f7f7',
         alignItems: 'center',
         justifyContent:'center',
-        
-
     },
-    containerLogo:{
-        
-        
-        
+    subTitulo:{
+        alignItems: 'center',
+        width:310,
+        height:30,
     },
-    
+    textSub:{
+        color: '#c2c2c2',
+        fontSize: 15,
+        fontFamily: 'arial' ,
+        fontStyle: 'italic',
+        textAlign:'center',
+    },
     logo:{
-        width:200,
-        height:65,
+        width:300,
+        height:89,
+    },
+    esqueci:{
+        flexDirection: 'row',
+    },
+    texto:{
+        flexDirection: 'row',
+    },
+    cadastro:{
+        color: '#207af7',
+        textDecorationLine: 'underline',
+    },
+    textRegister:{
+        color: '#b8bab8',
+        fontWeight: 'bold',
     },
     input:{
         width:300,
