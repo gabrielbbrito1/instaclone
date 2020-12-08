@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet,  View } from 'react-native';
 import Feed from './src/pages/Feed';
 import Login from './src/pages/Login';
 import Cadastro from './src/pages/Cadastro';

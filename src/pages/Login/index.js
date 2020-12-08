@@ -8,7 +8,6 @@ import { color } from 'react-native-reanimated';
 
 export default function Login(){
     const navigation = useNavigation();
-    
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
@@ -23,11 +22,11 @@ export default function Login(){
         .get('https://5fc9688a3c1c220016440c1b.mockapi.io/users')
         .then(response => {
           const data = response.data
-          console.log(data)
           setLoading(false)
+          console.log(data)
          
           data.forEach((item) => {
-            if(item.email === email && item.password === password) {
+            if(item.password === password  &&  item.email === email) {
                navigation.push("Feed");
            }
          });

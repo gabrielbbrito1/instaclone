@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { StyleSheet, FlatList, Button , View, ScrollView, TextInput} from 'react-native';
+import { StyleSheet, FlatList, Button , View, TextInput} from 'react-native';
 import axios from 'axios'
 import LazyImage from '../../components/LazyImage';
 import { AsyncStorage } from 'react-native';
@@ -17,8 +17,7 @@ export default function Feed() {
   const [text, setText] = useState('')
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
-
-  const MAX_LENGTH = 250;
+  const MAX_LENGTH = 200;
 
   async function loadPage(pageNumber = page, shouldRefresh = false) {
     if (pageNumber === total) return;
@@ -34,7 +33,7 @@ export default function Feed() {
       console.log(data)
 
       setLoading(false)
-      setTotal(Math.floor(totalItems / 10));
+      setTotal(Math.floor(totalItems / 5));
       setPage(pageNumber + 1);
       setFeed(shouldRefresh ? data : [...feed, ...data]);
     })
@@ -88,10 +87,10 @@ export default function Feed() {
 
   const renderItem = ({item}) => {
     return (
-    <View style={styles.card}>
+    //<View style={styles.card}>
       <Post key = {item.id}>
             <Header>
-              <Avatar source={{ uri: item.author.avatar }} />
+            <Avatar source={{ uri: item.author.avatar}} />
               <Name>{item.author.name}</Name>
             </Header>
 
@@ -99,7 +98,7 @@ export default function Feed() {
               aspectRatio={item.aspectRatio} 
               shouldLoad={viewable.includes(item.id)} 
               smallSource={{ uri: item.small }}
-              source={{ uri: item.photo }}
+              source={{ uri: item.image }}
             />
 
             <Description>
@@ -119,8 +118,8 @@ export default function Feed() {
                <TextInput
                   multiline={true}
                   onChangeText={(text) => setText(text)}
-                  placeholder={" Adicione um comentário"}
                   style={[styles.text]}
+                  placeholder={" Escreva um comentário"}
                   maxLength={MAX_LENGTH}
                   value={text}/>
 
@@ -134,7 +133,7 @@ export default function Feed() {
             </View>
 
       </Post>
-    </View>   
+    //</View>   
     )
   }
   
@@ -155,10 +154,10 @@ export default function Feed() {
           viewAreaCoveragePercentThreshold: 10,
         }}
         showsVerticalScrollIndicator={false}
-        onRefresh={refreshList}
-        refreshing={refreshing}
         onEndReachedThreshold={0.1}
         onEndReached={() => loadPage()}
+        onRefresh={refreshList}
+        refreshing={refreshing}
       />
     </Container>
   );
@@ -192,6 +191,7 @@ enviar: {
   marginTop: 5,
   marginBottom: 5,
   backgroundColor: '#ffffff',
+  color: '#fff'
  },
 imagemComents:{
  width: 30,

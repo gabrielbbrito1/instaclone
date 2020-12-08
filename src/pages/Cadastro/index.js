@@ -82,11 +82,11 @@ export default function Cadastro(){
 
             </TouchableOpacity>  
 
-        <Text style={styles.textRegister}>  ────────────────────────────</Text>
+        <Text style={styles.textLine}>  ────────────────────────────</Text>
 
         <View style={styles.texto}>
 
-        <Text>Já tem uma conta? </Text>
+        <Text>Já possui uma conta? </Text>
 
         <TouchableOpacity onPress ={()=>navigation.push('Login')}> 
             <Text style={styles.login}>Faça login</Text>
@@ -107,6 +107,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent:'center',
     },
+    textLine:{
+        marginTop: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#b8bab8',
+     },
     texto:{
         alignItems: 'center',
         justifyContent: 'center',
@@ -117,12 +123,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         color: '#207af7',
         textDecorationLine: 'underline',
-    },
-    textRegister:{
-        marginTop: 15,
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: '#b8bab8',
     },
     
     logo:{

@@ -23,7 +23,7 @@ export default function LazyImage({
     }
   }, [shouldLoad])
 
-  function handleAnimate() {
+  function handleAnimated() {
     Animated.timing(opacity, {
       duration: 500,
       toValue: 1,
@@ -40,7 +40,7 @@ export default function LazyImage({
       { loaded && (
         <AnimatedOriginal 
           style={{ opacity }}
-          onLoadEnd={handleAnimate}
+          onLoadEnd={handleAnimated}
           source={source} 
           aspect={aspectRatio} 
           resizeMode="contain"
