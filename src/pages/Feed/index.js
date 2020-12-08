@@ -8,15 +8,15 @@ import { AsyncStorage } from 'react-native';
 import { Container, Post, Header, Avatar, Name, Description, Loading } from './styles';
 
 export default function Feed() {
-  const [error, setError] = useState('');
   const [feed, setFeed] = useState([]);
+  const [error, setError] = useState('');
+  const [comentarios, setComentarios] = useState([])
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [viewable, setViewable] = useState([]);
+  const [text, setText] = useState('')
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
-  const [text, setText] = useState('')
-  const [comentarios, setComentarios] = useState([])
 
   const MAX_LENGTH = 250;
 
@@ -25,16 +25,12 @@ export default function Feed() {
     if (loading) return;
 
     setLoading(true);
-    //http://localhost:3000/feed?_expand=author&_limit=4&_page=1
-    //utilizar server.js no jsonserver
-    //https://5fa103ace21bab0016dfd97e.mockapi.io/api/v1/feed?page=1&limit=4
-    //utilizar o server2.js no www.mockapi.io
+
     axios
     .get('https://5fc9688a3c1c220016440c1b.mockapi.io/posts')
     .then(response => {
       const totalItems = response.headers["x-total-count"]
       const data = response.data
-      //console.log(data)
       setLoading(false)
       setTotal(Math.floor(totalItems / 4));
       setPage(pageNumber + 1);
@@ -60,12 +56,13 @@ export default function Feed() {
       const value = AsyncStorage.getItem(id);
 
       if (value !== null) {
-        // We have data!!
         setComentarios(value)
       } 
-    } catch (error) {
-      // Error saving data
-    }
+
+    } 
+      catch (error) {
+      }
+
   }
 
   const onSave = async (id) => {
@@ -73,7 +70,6 @@ export default function Feed() {
       await AsyncStorage.setItem(id, text);
       setComentarios([...comentarios, ...text])
     } catch (error) {
-      // Error saving data
     }
   }
 

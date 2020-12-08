@@ -3,6 +3,7 @@ import {View,Text, Button, KeyboardAvoidingView, TextInput, StyleSheet, Image, T
 import { useNavigation } from '@react-navigation/native';
 import {Loading } from './styles';
 import axios from 'axios';
+import { color } from 'react-native-reanimated';
 
 
 export default function Login(){
@@ -44,7 +45,7 @@ export default function Login(){
         <View style={styles.containerLogo}>
             <Image
                 style={styles.logo}
-                source={require('../../../assets/Instagram-Logo.png')}
+                source={require('../../../assets/PhotogramLogo.png')}
             />
 
         </View>
@@ -91,17 +92,21 @@ export default function Login(){
           onPress={login}
           >
 
-          <Text style={styles.submitText}>Entrar</Text>
+          <Text style={styles.enterText}>Entrar</Text>
 
         </TouchableOpacity>
        </View>
 
        <br />
+        
+                
+            <View style={styles.esqueci}>
+                <Text>Esqueceu sua senha? </Text>
+                <TouchableOpacity onPress ={()=>navigation.push('Cadastro')}>
+                <Text style={styles.forgetPasswordText}>Clique aqui</Text>
+                </TouchableOpacity>
+            </View>     
 
-       <View style={styles.esqueci}>
-            <Text>Esqueceu sua senha? </Text>
-            <Text style={{ color: '#207af7', textDecorationLine: 'underline' }}>Clique aqui</Text>
-       </View>     
        <br/>
        <br/>
        <br/>    
@@ -110,10 +115,11 @@ export default function Login(){
 
         <View style={styles.texto}>
             <Text>Não tem uma conta? </Text>
-        <TouchableOpacity
-          onPress ={()=>navigation.push('Cadastro')}
-          > 
+
+        <TouchableOpacity onPress ={()=>navigation.push('Cadastro')}>
+
           <Text style={styles.cadastro}>Cadastre-se</Text>
+
         </TouchableOpacity>
        </View>
     </>}
@@ -152,12 +158,17 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     cadastro:{
-        color: '#207af7',
+        color: '#0095F6',
         textDecorationLine: 'underline',
     },
     textRegister:{
         color: '#b8bab8',
-        fontWeight: 'bold',
+        fontWeight: 'bold'
+    },
+    EnterText:{
+        color:'#f5f5f5',
+        fontSize:18,
+        fontWeight: 'bold'
     },
     input:{
         width:300,
@@ -173,18 +184,21 @@ const styles = StyleSheet.create({
         marginBottom:2
     },
     btnSubmit:{
-        backgroundColor:'#35AAFF',
+        backgroundColor:'#0095F6',
         width:300,
         height:50,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius:8
+        borderRadius:8,
+        color: '#fff'
     },
-    submitText:{
-        color:'#FFF',
-        fontSize:18
-    },
+   
     msgError:{
         color:'red'
+    },
+
+    forgetPasswordText:{
+        color: '#0095F6',
+        textDecorationLine: 'underline'
     }
 })

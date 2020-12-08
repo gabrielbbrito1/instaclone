@@ -33,61 +33,65 @@ export default function Cadastro(){
     
     return(
         <KeyboardAvoidingView style={styles.background}>
-        <View style={styles.containerLogo}>
+            <View style={styles.containerLogo}>
             <Image
                 style={styles.logo}
-                source={require('../../../assets/Instagram-Logo.png')}
+                source={require('../../../assets/PhotogramLogo.png')}
             />
-            
-        </View>
-        {loading ?
-        <View>
-            <Loading />
-        </View>
-        :
-        <>
-        <View>
-            {error && (
-            <Text>
+            </View>
+
+            {loading ?
+
+            <View>
+                <Loading />
+            </View>
+            :     
+            <>
+
+            <View>
+                {error && (
+                    <Text>
                 {error}
+                    </Text>
+                )}
+                <TextInput
+                    style={styles.input}
+                    placeholder ="Email"
+                    autoCorrect={true}
+                    onChangeText={(text) => setEmail(text)}
+                />
+
+                <TextInput
+                    style={styles.input}
+                    placeholder ="Senha"
+                    autoCorrect={false}
+                    onChangeText={(text) => setPassword(text)}
+                    secureTextEntry={true}
+                />
+            </View>
+
+            <View style={styles.buttonContainer}>
+        
+            <TouchableOpacity 
+                onPress ={register}
+                style={styles.btnSubmit}
+        
+            > 
+            <Text style={styles.submitText}>Cadastrar
             </Text>
-            )}
-            <TextInput
-                style={styles.input}
-                placeholder ="Email"
-                autoCorrect={false}
-                onChangeText={(text) => setEmail(text)}
-            />
 
-            <TextInput
-                style={styles.input}
-                placeholder ="Senha"
-                autoCorrect={false}
-                onChangeText={(text) => setPassword(text)}
-                secureTextEntry={true}
-            />
-        </View>
-
-        <View style={styles.buttonContainer}>
-        
-        <TouchableOpacity 
-        onPress ={register}
-        style={styles.btnSubmit}
-        
-        > 
-          <Text style={styles.submitText}>Cadastrar</Text>
-
-        </TouchableOpacity>
+            </TouchableOpacity>
 
         <br/>    
 
         <Text style={styles.textRegister}>  ────────────────────────────</Text>
 
         <View style={styles.texto}>
+
         <Text>Já tem uma conta? </Text>
-        <TouchableOpacity onPress ={()=>navigation.push('Login')}
-        > 
-        <Text style={styles.login}>Faça login</Text>
+
+        <TouchableOpacity onPress ={()=>navigation.push('Login')}> 
+            <Text style={styles.login}>Faça login</Text>
         </TouchableOpacity>
         </View>
 
