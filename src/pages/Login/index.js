@@ -52,9 +52,7 @@ export default function Login(){
 
         <View style={styles.subTitulo}> 
             <Text  style={styles.textSub}>Faça login para ver e compartilhar fotos e vídeos com seus amigos</Text>
-            </View> 
-
-        <br />    
+            </View>    
 
         {loading ?
         <View>
@@ -96,10 +94,7 @@ export default function Login(){
 
         </TouchableOpacity>
        </View>
-
-       <br />
-        
-                
+                        
             <View style={styles.esqueci}>
                 <Text>Esqueceu sua senha? </Text>
                 <TouchableOpacity onPress ={()=>navigation.push('Cadastro')}>
@@ -107,11 +102,7 @@ export default function Login(){
                 </TouchableOpacity>
             </View>     
 
-       <br/>
-       <br/>
-       <br/>    
-
-        <Text style={styles.textRegister}>────────────── OU ──────────────</Text>
+        <Text style={styles.textRegister}>──────────── OU ────────────</Text>
 
         <View style={styles.texto}>
             <Text>Não tem uma conta? </Text>
@@ -136,6 +127,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
     },
     subTitulo:{
+        marginBottom: 30,
         alignItems: 'center',
         width:310,
         height:30,
@@ -143,7 +135,6 @@ const styles = StyleSheet.create({
     textSub:{
         color: '#c2c2c2',
         fontSize: 15,
-        fontFamily: 'arial' ,
         fontStyle: 'italic',
         textAlign:'center',
     },
@@ -152,9 +143,12 @@ const styles = StyleSheet.create({
         height:89,
     },
     esqueci:{
+        marginTop: 15,
+        marginBottom: 15,
         flexDirection: 'row',
     },
     texto:{
+        marginTop: 10,
         flexDirection: 'row',
     },
     cadastro:{
@@ -162,6 +156,7 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline',
     },
     textRegister:{
+        marginTop: 15,
         color: '#b8bab8',
         fontWeight: 'bold'
     },

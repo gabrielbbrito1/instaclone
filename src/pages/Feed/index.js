@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { StyleSheet, FlatList,Button , View, ScrollView, TextInput} from 'react-native';
+import { StyleSheet, FlatList, Button , View, ScrollView, TextInput} from 'react-native';
 import axios from 'axios'
 import LazyImage from '../../components/LazyImage';
 import { AsyncStorage } from 'react-native';
@@ -28,11 +28,12 @@ export default function Feed() {
 
     axios
     .get('https://5fc9688a3c1c220016440c1b.mockapi.io/posts')
-    .then(response => {
-      const totalItems = response.headers["x-total-count"]
-      const data = response.data
+    .then( async response => {
+      const totalItems = await response.headers["x-total-count"]
+      const data = await response.data
+
       setLoading(false)
-      setTotal(Math.floor(totalItems / 4));
+      setTotal(Math.floor(totalItems / 10));
       setPage(pageNumber + 1);
       setFeed(shouldRefresh ? data : [...feed, ...data]);
     })
@@ -49,6 +50,10 @@ export default function Feed() {
 
     setRefreshing(false);
   }
+
+  useEffect(() => {
+    loadPage();
+  }, []);
 
   const onGet = (id) => {
     try {
@@ -79,10 +84,10 @@ export default function Feed() {
     loadPage()
   }, []);
 
- 
 
   const renderItem = ({item}) => {
     return (
+    <View style={styles.card}>
       <Post key = {item.id}>
             <Header>
               <Avatar source={{ uri: item.author.avatar }} />
@@ -99,9 +104,6 @@ export default function Feed() {
             <Description>
               <Name>{item.author.name}</Name> {item.description}
             </Description>
-            {/*<Description>
-              {comentarios}
-            </Description>*/}
            
             <Button
               title="Curtir"
@@ -109,23 +111,29 @@ export default function Feed() {
               accessibilityLabel="Salvar">
             </Button>
 
-           
+            <View style={styles.campoComents}>
 
-            <TextInput
-              multiline={true}
-              onChangeText={(text) => setText(text)}
-              placeholder={"Comentários"}
-              style={[styles.text]}
-              maxLength={MAX_LENGTH}
-              value={text}/>
+            <Avatar style={styles.imagemComents} source={{ uri: item.author.avatar }} />
+
+               <TextInput
+                  multiline={true}
+                  onChangeText={(text) => setText(text)}
+                  placeholder={" Adicione um comentário"}
+                  style={[styles.text]}
+                  maxLength={MAX_LENGTH}
+                  value={text}/>
 
             <Button
+              style={styles.enviar}
               title="Salvar"
               onPress={() => onSave(String(item.id))}
               accessibilityLabel="Salvar">
             </Button>
 
+            </View>
+
       </Post>
+    </View>   
     )
   }
   
@@ -155,14 +163,58 @@ export default function Feed() {
   );
 }
 
-const styles = StyleSheet.create(
-  {text: {
-    fontSize: 30,
-    lineHeight: 33,
+const styles = StyleSheet.create({
+  text: {
+    width: '100%',
+    fontSize: 15,
+    lineHeight: 30,
     color: "#333333",
-    padding: 16,
-    paddingTop: 16,
-    minHeight: 170,
+    borderBottomWidth: 2,
     borderTopWidth: 1,
-    borderColor: "rgba(212,211,211, 0.3)"
-}})
+    borderRightWidth: 1,
+    borderLeftWidth: 1,
+    borderLeftColor: '#c9c9c9',
+    borderRightColor: '#c9c9c9',
+    borderTopColor: '#c9c9c9',
+    borderBottomColor: '#c9c9c9',
+    marginTop: 5,
+    marginBottom: 10,
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15
+},
+enviar: {
+  width: '10%',
+  height: '10',
+  marginLeft: 5,
+  marginTop: 5,
+  marginBottom: 5,
+  backgroundColor: '#ffffff',
+ },
+imagemComents:{
+ width: 30,
+ height: 30,
+ marginLeft: 10,
+ marginTop: 10,
+ marginBottom: 10,
+},
+card: {
+  backgroundColor: '#ffffff',
+  marginTop: 20,
+  marginHorizontal: 500,
+  marginBottom: 8,
+  borderBottomWidth: 2,
+	borderTopWidth: 1,
+	borderRightWidth: 1,
+	borderLeftWidth: 1,
+	borderLeftColor: '#c9c9c9',
+	borderRightColor: '#c9c9c9',
+	borderTopColor: '#c9c9c9',
+	borderBottomColor: '#c9c9c9'
+},
+campoComents: {
+  flexDirection: 'row'
+}
+
+})

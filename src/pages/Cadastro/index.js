@@ -80,9 +80,7 @@ export default function Cadastro(){
             <Text style={styles.submitText}>Cadastrar
             </Text>
 
-            </TouchableOpacity>
-
-        <br/>    
+            </TouchableOpacity>  
 
         <Text style={styles.textRegister}>  ────────────────────────────</Text>
 
@@ -121,6 +119,7 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline',
     },
     textRegister:{
+        marginTop: 15,
         alignItems: 'center',
         justifyContent: 'center',
         color: '#b8bab8',
