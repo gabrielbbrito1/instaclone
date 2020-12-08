@@ -31,6 +31,7 @@ export default function Feed() {
     .then( async response => {
       const totalItems = await response.headers["x-total-count"]
       const data = await response.data
+      console.log(data)
 
       setLoading(false)
       setTotal(Math.floor(totalItems / 10));
