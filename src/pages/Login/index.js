@@ -24,6 +24,7 @@ export default function Login(){
           const data = response.data
           setLoading(false)
           console.log(data)
+          a
          
           data.forEach((item) => {
             if(item.password === password  &&  item.email === email) {
