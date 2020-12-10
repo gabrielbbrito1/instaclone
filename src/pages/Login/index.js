@@ -33,10 +33,11 @@ export default function Login() {
 				setLoading(false)
 				console.log(data)
 
-				const isLogged = false
+				let isLogged = false
 				data.forEach((item) => {
 					if (item.password === password && item.email === email) {
 						isLogged = true
+						console.log(data)
 						navigation.push('Feed')
 					}
 				})
