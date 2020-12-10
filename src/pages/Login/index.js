@@ -49,7 +49,7 @@ export default function Login() {
 				setLoading(true)
 			})
 	}
-
+//sd
 	return (
 		<KeyboardAvoidingView style={styles.background}>
 			<View style={styles.containerLogo}>
