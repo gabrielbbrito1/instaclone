@@ -1,14 +1,5 @@
 import React, { useState } from 'react'
-import {
-	View,
-	Text,
-	Button,
-	KeyboardAvoidingView,
-	TextInput,
-	StyleSheet,
-	Image,
-	TouchableOpacity
-} from 'react-native'
+import { View, Text, Button, KeyboardAvoidingView, TextInput, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { Loading } from './styles'
 import axios from 'axios'
@@ -33,11 +24,12 @@ export default function Login() {
 				setLoading(false)
 				console.log(data)
 
-				const isLogged = false
+				let isLogged = false
 				data.forEach((item) => {
 					if (item.password === password && item.email === email) {
 						isLogged = true
-						navigation.push('Feed')
+						console.log(data)
+						navigation.push('Feed', {userId: item.id, userName:item.name, userAvatar:item.avatar});
 					}
 				})
 
