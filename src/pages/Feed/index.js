@@ -199,7 +199,13 @@ export default function Feed(props) {
 
         </TouchableOpacity>
 
-        </View>
+        </View >
+
+       <View style={styles.campoComents}>
+
+       <Avatar style={styles.imagemComents} source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/pcridesagain/128.jpg' }} />
+    
+
 
             <TextInput
               multiline={true}
@@ -208,16 +214,15 @@ export default function Feed(props) {
               style={[styles.text]}
               maxLength={MAX_LENGTH}
               />
+   
 
-        
-        <Button
-              title="Salvar"
-              onPress={() => comment(item.id)}
-              accessibilityLabel="Salvar">
-            </Button>
+       <TouchableOpacity  title="Salvar" onPress={() => comment(item.id)} accessibilityLabel="Salvar">
+        <Image source={require('../../../assets/sendIcon.png')}  style={styles.sendIcon}/>
+      </TouchableOpacity>
+    
               
               <View style ={{flexDirection:'row'}}>
-
+      </View>
         
         
         </View>
@@ -254,16 +259,23 @@ export default function Feed(props) {
 
 const styles = StyleSheet.create(
   {text: {
-    fontSize: 30,
-    lineHeight: 33,
-    color: "#333333",
-    padding: 16,
-    paddingTop: 16,
-    minHeight: 170,
-    borderTopWidth: 1,
-    borderColor: "rgba(212,211,211, 0.3)"
-
-
+    width: '70%',
+    height: '80%',
+    fontSize: 13,
+    lineHeight: 50,
+    borderBottomWidth: 2,
+    borderRightWidth: 1,
+    borderLeftWidth: 1,
+    borderLeftColor: '#c9c9c9',
+    borderRightColor: '#c9c9c9',
+    borderTopColor: '#c9c9c9',
+    borderBottomColor: '#c9c9c9',
+    marginTop: 5,
+    marginBottom: 10,
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15
   },
   btn:{
     backgroundColor:"#35AAFF", 
@@ -289,8 +301,25 @@ const styles = StyleSheet.create(
     width: 30,
     height: 30,
     marginLeft:15,
-    marginTop:10
-  }
+    marginTop:10,
+  },
+  campoComents: {
+    flexDirection: 'row',
+  },
+  imagemComents:{
+    width: 45,
+    height: 45,
+    marginLeft: 5,
+    marginTop: 5,
+    marginBottom: 5,
+   },
+   sendIcon: {
+    width: 36,
+    height: 36,
+    marginLeft: 5,
+    marginTop: 7,
+    marginBottom: 5
+   }
 
 })
 
