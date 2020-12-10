@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {View, StyleSheet, FlatList, SafeAreaView, Text} from 'react-native'
 import {Loading} from './styles';
-import PostListItem from './itemPost'
+import LikePost from './LikePost';
 import axios from 'axios';
 
 
 
-const listaLike = props => {
+    const listaLike = props => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
     const [likes, setLikes] = useState([]); 
@@ -19,12 +19,11 @@ const listaLike = props => {
         .get(`https://5fc9688a3c1c220016440c1b.mockapi.io/likes`)
         .then(response => {
           const data = response.data.filter((dataItem)=>{
-                return dataItem.id_post === post;
+                return dataItem.ID_post === post;
           });
 
           setLikes(data);
 
-         setError("Usuário ou Senha Inválidos");
         })
         .catch(err => {
           setError(err.message);
@@ -37,7 +36,7 @@ const listaLike = props => {
 
     const renderItem = ({item}) => {
         return (
-            <PostListItem 
+            <LikePost 
                 key={item.id} 
                 likes={item}
             />
@@ -48,7 +47,7 @@ const listaLike = props => {
         return (
             <View style={style.headerStyle}>
                 <Text style={style.titleStyle}>
-                    Listagem de Curtidas
+                   Lista de Curtidas
                 </Text>
             </View>
         )
@@ -84,7 +83,7 @@ const style = StyleSheet.create(
             flex: 1,
             height: 50,
             width: '100%',
-            backgroundColor: "#00BFFF",
+            backgroundColor: "#0095F6",
             justifyContent: "center",
             alignItems: 'center'
         },

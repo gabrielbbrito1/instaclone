@@ -29,15 +29,7 @@ export default function Login() {
 					if (item.password === password && item.email === email) {
 						isLogged = true
 						console.log(data)
-<<<<<<< HEAD
 						navigation.push('Feed', {userId: item.id, userName:item.name, userAvatar:item.avatar});
-=======
-<<<<<<< HEAD
-						navigation.push('Feed', {userId: item.id, userName:item.name, userAvatar:item.avatar});
-=======
-						navigation.push('Feed')
->>>>>>> 8db974c08d01653863bf381e847b547035231a4c
->>>>>>> 8f6844fd9957cffa394177c93b0e3b2ddb613eb1
 					}
 				})
 
@@ -157,6 +149,7 @@ const styles = StyleSheet.create({
 	texto: {
 		marginTop: 10,
 		flexDirection: 'row'
+
 	},
 	cadastro: {
 		color: '#0095F6',
@@ -168,8 +161,8 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold'
 	},
 	EnterText: {
-		color: '#f5f5f5',
-		fontSize: 18,
+		color: '#fff',
+		fontSize: 20,
 		fontWeight: 'bold'
 	},
 	input: {

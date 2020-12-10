@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
 	login: {
 		alignItems: 'center',
 		justifyContent: 'center',
-		color: '#207af7',
+		color: '#35AAFF',
 		textDecorationLine: 'underline'
 	},
 

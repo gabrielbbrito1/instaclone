@@ -2,7 +2,7 @@ import React from 'react'
 import {View, StyleSheet, Image, Text} from 'react-native'
 
 
-const itemPost = props => {
+const LikePost = props => {
     const {likes} = props
     return(
         
@@ -38,7 +38,7 @@ const style = StyleSheet.create({
         }
     }
 )
-export default itemPost
+export default LikePost
 
 
 

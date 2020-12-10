@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { StyleSheet, FlatList, View, Button, TextInput, TouchableOpacity, Image} from 'react-native';
+import { StyleSheet, FlatList, View, Button, TextInput, TouchableOpacity, Image, Text} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios'
 import LazyImage from '../../components/LazyImage';
@@ -194,7 +194,7 @@ export default function Feed(props) {
         <TouchableOpacity
             onPress={()=>{navigation.push("Likes", {post: item.id})}}>
           
-          <Image style={styles.heartIcon} source={require("../../../assets/b_like.png")}/>
+          <Text style={styles.cadastro}>Lista de curtidas</Text>
           
 
         </TouchableOpacity>
@@ -216,7 +216,7 @@ export default function Feed(props) {
               />
    
 
-       <TouchableOpacity  title="Salvar" onPress={() => comment(item.id)} accessibilityLabel="Salvar">
+       <TouchableOpacity  title="Publicar" onPress={() => comment(item.id)} accessibilityLabel="Publicar">
         <Image source={require('../../../assets/sendIcon.png')}  style={styles.sendIcon}/>
       </TouchableOpacity>
     
@@ -275,7 +275,7 @@ const styles = StyleSheet.create(
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
     borderTopLeftRadius: 15,
-    borderTopRightRadius: 15
+    borderTopRightRadius: 15,
   },
   btn:{
     backgroundColor:"#35AAFF", 
@@ -285,7 +285,7 @@ const styles = StyleSheet.create(
     justifyContent: 'center',
     marginTop:10
   },
-  btnName:{
+  nomeBotao :{
     alignItems: 'center',
     color:"#fff"
 
@@ -314,12 +314,16 @@ const styles = StyleSheet.create(
     marginBottom: 5,
    },
    sendIcon: {
-    width: 36,
-    height: 36,
+    width: 30,
+    height: 30,
     marginLeft: 5,
-    marginTop: 7,
+    marginTop: 30,
     marginBottom: 5
-   }
+   },
+   cadastro: {
+		color: '#000',
+    textDecorationLine: 'underline',
+    marginLeft: 5
+	},
 
 })
-
