@@ -161,7 +161,6 @@ export default function Feed(props) {
   useEffect(() => {
     loadPage()
   }, []);
- 
 
   const renderItem = ({item}) => {
     let counter =0;
@@ -203,8 +202,7 @@ export default function Feed(props) {
         <TouchableOpacity  >
           
           <Image style={styles.heartIcon} source={require("../../../assets/comments.png")}
-          onPress={()=> {onfocus='campoTexto'}} />
-          
+          />      
 
         </TouchableOpacity>
 
@@ -214,7 +212,7 @@ export default function Feed(props) {
 
             <TextInput
               multiline={true}
-              name="campoTexto"
+              ref={this.textComent}
               onChangeText={(text) => setText(text)}
               placeholder={"Comentários"}
               style={[styles.text]}
