@@ -199,16 +199,22 @@ export default function Feed(props) {
 
         </TouchableOpacity>
 
+        
+        <TouchableOpacity  >
+          
+          <Image style={styles.heartIcon} source={require("../../../assets/comments.png")}
+          onPress={()=> {onfocus='campoTexto'}} />
+          
+
+        </TouchableOpacity>
+
         </View >
 
        <View style={styles.campoComents}>
 
-       <Avatar style={styles.imagemComents} source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/pcridesagain/128.jpg' }} />
-    
-
-
             <TextInput
               multiline={true}
+              name="campoTexto"
               onChangeText={(text) => setText(text)}
               placeholder={"Comentários"}
               style={[styles.text]}
@@ -259,8 +265,8 @@ export default function Feed(props) {
 
 const styles = StyleSheet.create(
   {text: {
-    width: '70%',
-    height: '80%',
+    width: '88%',
+    height: '88%',
     fontSize: 13,
     lineHeight: 50,
     borderBottomWidth: 2,
@@ -271,6 +277,7 @@ const styles = StyleSheet.create(
     borderTopColor: '#c9c9c9',
     borderBottomColor: '#c9c9c9',
     marginTop: 5,
+    marginLeft: 5,
     marginBottom: 10,
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
@@ -301,29 +308,25 @@ const styles = StyleSheet.create(
     width: 30,
     height: 30,
     marginLeft:15,
+    marginRight: 5,
     marginTop:10,
   },
   campoComents: {
     flexDirection: 'row',
   },
-  imagemComents:{
-    width: 45,
-    height: 45,
-    marginLeft: 5,
-    marginTop: 5,
-    marginBottom: 5,
-   },
    sendIcon: {
     width: 30,
     height: 30,
     marginLeft: 5,
-    marginTop: 30,
-    marginBottom: 5
+    marginTop: 25,
+    marginBottom: 5,
    },
    cadastro: {
-		color: '#000',
+    color: '#000',
+    fontWeight: 'bold',
+    marginTop: 14,
+    marginLeft: 15,
     textDecorationLine: 'underline',
     marginLeft: 5
-	},
-
+	}
 })
