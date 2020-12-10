@@ -68,7 +68,7 @@ export default function Cadastro() {
 
 						<TextInput
 							style={styles.input}
-							placeholder='Senha'
+							placeholder='Password'
 							autoCorrect={false}
 							onChangeText={(text) => setPassword(text)}
 							secureTextEntry={true}
@@ -140,7 +140,9 @@ const styles = StyleSheet.create({
 		padding: 11
 	},
 	buttonContainer: {
-		marginTop: 8
+		marginTop: 8,
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	btnSubmit: {
 		backgroundColor: '#35AAFF',

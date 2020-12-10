@@ -76,7 +76,7 @@ export default function Login() {
 
 						<TextInput
 							style={styles.input}
-							placeholder='Senha'
+							placeholder='Password'
 							autoCorrect={false}
 							onChangeText={(text) => setPassword(text)}
 							secureTextEntry={true}
@@ -160,9 +160,9 @@ const styles = StyleSheet.create({
 		color: '#b8bab8',
 		fontWeight: 'bold'
 	},
-	EnterText: {
+	enterText: {
 		color: '#fff',
-		fontSize: 20,
+		fontSize: 16,
 		fontWeight: 'bold'
 	},
 	input: {
@@ -176,7 +176,10 @@ const styles = StyleSheet.create({
 	},
 	buttonContainer: {
 		marginTop: 8,
-		marginBottom: 2
+		marginBottom: 2,
+		alignItems: 'center',
+		justifyContent: 'center',
+		color: '#fff'
 	},
 	btnSubmit: {
 		backgroundColor: '#0095F6',
