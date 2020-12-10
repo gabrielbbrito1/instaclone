@@ -29,7 +29,11 @@ export default function Login() {
 					if (item.password === password && item.email === email) {
 						isLogged = true
 						console.log(data)
+<<<<<<< HEAD
 						navigation.push('Feed', {userId: item.id, userName:item.name, userAvatar:item.avatar});
+=======
+						navigation.push('Feed')
+>>>>>>> 8db974c08d01653863bf381e847b547035231a4c
 					}
 				})
 
@@ -40,7 +44,7 @@ export default function Login() {
 				setLoading(true)
 			})
 	}
-
+//sd
 	return (
 		<KeyboardAvoidingView style={styles.background}>
 			<View style={styles.containerLogo}>
