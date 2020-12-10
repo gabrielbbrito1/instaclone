@@ -92,10 +92,6 @@ export default function Feed(props) {
     .finally(()=>{setLoading(false)});
   }
 
-
- 
-
-
   async function like(postId) {
     if (loading || !userId || !userName || !userAvatar) return;
     const undoLike = myLikes.filter((lk)=>{return lk.ID_post===postId});
@@ -140,12 +136,6 @@ export default function Feed(props) {
   }
 
 
-
-
-  useEffect(() => {
-    loadPage()
-  }, []);
-
   const onGet = (id) => {
     try {
 
@@ -168,7 +158,9 @@ export default function Feed(props) {
     } catch (error) {
     }
   }
-
+  useEffect(() => {
+    loadPage()
+  }, []);
  
 
   const renderItem = ({item}) => {
@@ -208,7 +200,6 @@ export default function Feed(props) {
         </TouchableOpacity>
 
         </View>
-              
 
             <TextInput
               multiline={true}

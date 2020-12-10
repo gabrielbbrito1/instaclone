@@ -19,18 +19,17 @@ export default function Login(){
         setLoading(true);
         
         axios
-        .get('https://5fc9688a3c1c220016440c1b.mockapi.io/users')
+        .get(`https://5fc9688a3c1c220016440c1b.mockapi.io/users`)
         .then(response => {
           const data = response.data
-          setLoading(false)
           console.log(data)
+          setLoading(false)
          
           data.forEach((item) => {
-            if(item.password === password  &&  item.email === email) {
-               navigation.push("Feed");
+            if(item.email === email && item.password === password) {
+               navigation.push("Feed", {userId: item.id, userName:item.name, userAvatar:item.avatar});
            }
          });
-
          setError("Usuário ou Senha Inválidos")
         })
         .catch(err => {

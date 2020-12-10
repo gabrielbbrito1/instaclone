@@ -9,20 +9,21 @@ export default function Cadastro(){
     const navigation = useNavigation();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     
     async function register() {
-        if (loading || !email || !password) return;
+        if (!name || loading || !email || !password) return;
         
         setLoading(true);
         
         axios
-        .post('https://5fc9688a3c1c220016440c1b.mockapi.io/users', {email,password})
+        .post('https://5fc9688a3c1c220016440c1b.mockapi.io/users', {name,email,password})
         .then(response => {
+            setLoading(false)
           const data = response.data
           console.log(data)
-          setLoading(false)
           navigation.push('Login')
         })
         .catch(err => {
@@ -54,6 +55,13 @@ export default function Cadastro(){
                 {error}
                     </Text>
                 )}
+                <TextInput
+                    style={styles.input}
+                    placeholder ="NAme"
+                    autoCorrect={true}
+                    onChangeText={(text) => setEmail(text)}
+                />
+
                 <TextInput
                     style={styles.input}
                     placeholder ="Email"
