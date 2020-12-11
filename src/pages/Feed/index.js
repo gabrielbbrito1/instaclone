@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { StyleSheet, FlatList, View, Button, TextInput, TouchableOpacity, Image, Text} from 'react-native';
+import { StyleSheet, FlatList, View, Button, TextInput, TouchableOpacity, Image, Text, Label} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios'
 import LazyImage from '../../components/LazyImage';
@@ -24,7 +24,7 @@ export default function Feed(props) {
   const userName = props.route.params.userName;
   const userId = props.route.params.userId;
   const userAvatar = props.route.params.userAvatar;
-  const MAX_LENGTH = 200;
+  const MAX_LENGTH = 250;
 
   async function loadPage(pageNumber = page, shouldRefresh = false) {
     if(total && pageNumber > total) return;
@@ -39,7 +39,7 @@ export default function Feed(props) {
       const data = response.data
       getLikes();
       getUsers();
-      setTotal(Math.floor(totalItems / 5));
+      setTotal(Math.floor(totalItems / 4));
       setPage(pageNumber + 1);
       setFeed(shouldRefresh ? data : [...feed, ...data]);
     })
@@ -177,7 +177,7 @@ export default function Feed(props) {
               smallSource={{ uri: item.small }}
               source={{ uri: item.image }}
             />
-              
+            <Description><Name>{item.author.name}</Name>: {item.description}</Description>
         <View style ={{flexDirection:'row'}}>
         
         <TouchableOpacity
@@ -212,7 +212,6 @@ export default function Feed(props) {
 
             <TextInput
               multiline={true}
-              ref={this.textComent}
               onChangeText={(text) => setText(text)}
               placeholder={"Comentários"}
               style={[styles.text]}
@@ -220,7 +219,7 @@ export default function Feed(props) {
               />
    
 
-       <TouchableOpacity  title="Publicar" onPress={() => comment(item.id)} accessibilityLabel="Publicar">
+       <TouchableOpacity onPress={() => onSave(String(item.id))}>
         <Image source={require('../../../assets/sendIcon.png')}  style={styles.sendIcon}/>
       </TouchableOpacity>
     
@@ -270,10 +269,7 @@ const styles = StyleSheet.create(
     borderBottomWidth: 2,
     borderRightWidth: 1,
     borderLeftWidth: 1,
-    borderLeftColor: '#c9c9c9',
-    borderRightColor: '#c9c9c9',
-    borderTopColor: '#c9c9c9',
-    borderBottomColor: '#c9c9c9',
+    borderColor: '#c9c9c9',
     marginTop: 5,
     marginLeft: 5,
     marginBottom: 10,

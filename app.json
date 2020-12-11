@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "feed-insta",
-    "slug": "feed-insta",
+    "name": "photogram",
+    "slug": "photogram",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

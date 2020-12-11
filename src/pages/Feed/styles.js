@@ -28,6 +28,7 @@ export const Name = styled.Text`
 export const Description = styled.Text`
   padding: 15px;
   line-height: 18px;
+  margin-right : 5px;
 `;
 
 export const Loading = styled.ActivityIndicator.attrs({

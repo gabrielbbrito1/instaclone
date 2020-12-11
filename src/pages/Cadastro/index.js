@@ -75,10 +75,10 @@ export default function Cadastro() {
 						/>
 					</View>
 
-					<View style={styles.buttonContainer}>
+					<View style={styles.containerButton}>
 						<TouchableOpacity
 							onPress={register}
-							style={styles.btnSubmit}>
+							style={styles.botaoSubmit}>
 							<Text style={styles.submitText}>Cadastrar</Text>
 						</TouchableOpacity>
 
@@ -108,6 +108,10 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
+	logo: {
+		width: 300,
+		height: 89
+	},
 	textLine: {
 		marginTop: 15,
 		alignItems: 'center',
@@ -125,11 +129,6 @@ const styles = StyleSheet.create({
 		color: '#35AAFF',
 		textDecorationLine: 'underline'
 	},
-
-	logo: {
-		width: 300,
-		height: 89
-	},
 	input: {
 		width: 300,
 		height: 50,
@@ -139,12 +138,12 @@ const styles = StyleSheet.create({
 		borderRadius: 8,
 		padding: 11
 	},
-	buttonContainer: {
+	containerButton: {
 		marginTop: 8,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
-	btnSubmit: {
+	botaoSubmit: {
 		backgroundColor: '#35AAFF',
 		width: 300,
 		height: 50,
@@ -154,6 +153,7 @@ const styles = StyleSheet.create({
 	},
 	submitText: {
 		color: '#FFF',
-		fontSize: 18
+		fontSize: 18,
+		fontWeight: 'bold'
 	}
 })

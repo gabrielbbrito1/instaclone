@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
 
 	},
 	cadastro: {
-		color: '#0095F6',
+		color: '#35AAFF',
 		textDecorationLine: 'underline'
 	},
 	textRegister: {
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
 	},
 	enterText: {
 		color: '#fff',
-		fontSize: 16,
+		fontSize: 18	,
 		fontWeight: 'bold'
 	},
 	input: {
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
 		color: '#fff'
 	},
 	btnSubmit: {
-		backgroundColor: '#0095F6',
+		backgroundColor: '#35AAFF',
 		width: 300,
 		height: 50,
 		alignItems: 'center',
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
 	},
 
 	forgetPasswordText: {
-		color: '#0095F6',
+		color: '#35AAFF',
 		textDecorationLine: 'underline'
 	}
 })

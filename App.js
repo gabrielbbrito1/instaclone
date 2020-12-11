@@ -4,7 +4,7 @@ import Feed from './src/pages/Feed'
 import Login from './src/pages/Login'
 import Cadastro from './src/pages/Cadastro'
 import listaLike from './src/pages/listaLike'
-import { createStackNavigator, HeaderTitle } from '@react-navigation/stack'
+import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 
 const Stack = createStackNavigator()
