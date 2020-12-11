@@ -128,14 +128,14 @@ const styles = StyleSheet.create({
 	subTitulo: {
 		marginBottom: 30,
 		alignItems: 'center',
-		width: 310,
-		height: 30
+		width: '65%',
+		height: 30,
 	},
 	textSub: {
 		color: '#c2c2c2',
-		fontSize: 15,
+		fontSize: 16,
 		fontStyle: 'italic',
-		textAlign: 'center'
+		textAlign: 'center',
 	},
 	logo: {
 		width: 300,
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
 
 	},
 	cadastro: {
-		color: '#35AAFF',
+		color: '#0095F6',
 		textDecorationLine: 'underline'
 	},
 	textRegister: {
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
 	},
 	enterText: {
 		color: '#fff',
-		fontSize: 18	,
+		fontSize: 16,
 		fontWeight: 'bold'
 	},
 	input: {
@@ -188,7 +188,6 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		borderRadius: 8,
-		color: '#fff'
 	},
 
 	msgError: {
@@ -196,7 +195,7 @@ const styles = StyleSheet.create({
 	},
 
 	forgetPasswordText: {
-		color: '#35AAFF',
+		color: '#0095F6',
 		textDecorationLine: 'underline'
 	}
 })

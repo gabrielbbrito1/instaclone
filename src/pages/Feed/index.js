@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { StyleSheet, FlatList, View, Button, TextInput, TouchableOpacity, Image, Text, Label} from 'react-native';
+import { StyleSheet, FlatList, View, Button, TextInput, TouchableOpacity, Image, Text} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios'
 import LazyImage from '../../components/LazyImage';
@@ -24,7 +24,7 @@ export default function Feed(props) {
   const userName = props.route.params.userName;
   const userId = props.route.params.userId;
   const userAvatar = props.route.params.userAvatar;
-  const MAX_LENGTH = 250;
+  const MAX_LENGTH = 200;
 
   async function loadPage(pageNumber = page, shouldRefresh = false) {
     if(total && pageNumber > total) return;
@@ -39,7 +39,7 @@ export default function Feed(props) {
       const data = response.data
       getLikes();
       getUsers();
-      setTotal(Math.floor(totalItems / 4));
+      setTotal(Math.floor(totalItems / 5));
       setPage(pageNumber + 1);
       setFeed(shouldRefresh ? data : [...feed, ...data]);
     })
@@ -177,7 +177,7 @@ export default function Feed(props) {
               smallSource={{ uri: item.small }}
               source={{ uri: item.image }}
             />
-            <Description><Name>{item.author.name}</Name>: {item.description}</Description>
+              
         <View style ={{flexDirection:'row'}}>
         
         <TouchableOpacity
@@ -208,26 +208,31 @@ export default function Feed(props) {
 
         </View >
 
+        <View style={styles.comentarios}>
+              <Name style={styles.nameComent}>{item.author.name} </Name>
+              <Text>{item.description}</Text>
+        </View>
+
+
        <View style={styles.campoComents}>
+
+       <Image style={styles.avatarIcon} source={require("../../../assets/iconAvatar.png")}
+          />      
 
             <TextInput
               multiline={true}
               onChangeText={(text) => setText(text)}
-              placeholder={"Comentários"}
+              placeholder={"Adicione um Comentário..."}
               style={[styles.text]}
               maxLength={MAX_LENGTH}
               />
    
 
-       <TouchableOpacity onPress={() => onSave(String(item.id))}>
+       <TouchableOpacity  title="Publicar" onPress={() => comment(item.id)} accessibilityLabel="Publicar">
         <Image source={require('../../../assets/sendIcon.png')}  style={styles.sendIcon}/>
       </TouchableOpacity>
     
-              
-              <View style ={{flexDirection:'row'}}>
-      </View>
-        
-        
+    
         </View>
             
       </Post>
@@ -262,57 +267,59 @@ export default function Feed(props) {
 
 const styles = StyleSheet.create(
   {text: {
-    width: '88%',
-    height: '88%',
     fontSize: 13,
     lineHeight: 50,
-    borderBottomWidth: 2,
-    borderRightWidth: 1,
-    borderLeftWidth: 1,
-    borderColor: '#c9c9c9',
-    marginTop: 5,
+    marginTop: 20,
     marginLeft: 5,
-    marginBottom: 10,
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
+    marginBottom: 5,
+    width: '80%',
+    height: '30%',
   },
-  btn:{
-    backgroundColor:"#35AAFF", 
-    width:360,
-    height:34,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop:10
-  },
-  nomeBotao :{
-    alignItems: 'center',
-    color:"#fff"
-
-  },
-  iconRow: {
+  comentarios: {
     flexDirection: "row",
-    alignSelf: "stretch",
+    marginLeft: 10,
     marginTop: 10,
-    paddingVertical: 5,
-    paddingHorizontal: 15
+    marginBottom: 5,
+  },
+  nameComent: {
+    fontWeight: 'bold',
   },
   heartIcon: {
-    width: 30,
-    height: 30,
+    width: 20,
+    height: 20,
     marginLeft:15,
     marginRight: 5,
     marginTop:10,
   },
   campoComents: {
     flexDirection: 'row',
+    width: '100%',
+    height: 50,
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    borderBottomWidth: 2,
+    borderRightWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    borderLeftColor: '#c9c9c9',
+    borderRightColor: '#c9c9c9',
+    borderTopColor: '#c9c9c9',
+    borderBottomColor: '#c9c9c9',
   },
    sendIcon: {
     width: 30,
     height: 30,
     marginLeft: 5,
-    marginTop: 25,
+    marginTop: 10,
+    marginBottom: 1,
+   },
+   avatarIcon: {
+    width: 30,
+    height: 30,
+    marginLeft: 5,
+    marginTop: 10,
     marginBottom: 5,
    },
    cadastro: {
