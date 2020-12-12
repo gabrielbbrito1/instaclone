@@ -17,16 +17,18 @@ export default function Cadastro() {
 	const navigation = useNavigation()
 	const [error, setError] = useState('')
 	const [loading, setLoading] = useState(false)
+	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
 	async function register() {
-		if (loading || !email || !password) return
+		if (loading || !name || !email || !password) return
 
 		setLoading(true)
 
 		axios
 			.post('https://5fc9688a3c1c220016440c1b.mockapi.io/users', {
+				name,
 				email,
 				password
 			})
@@ -61,6 +63,13 @@ export default function Cadastro() {
 						{error.length !== 0 ? <Text>{error}</Text> : null}
 						<TextInput
 							style={styles.input}
+							placeholder='Name'
+							autoCorrect={true}
+							onChangeText={(text) => setName(text)}
+						/>
+
+						<TextInput
+							style={styles.input}
 							placeholder='Email'
 							autoCorrect={true}
 							onChangeText={(text) => setEmail(text)}
@@ -75,10 +84,10 @@ export default function Cadastro() {
 						/>
 					</View>
 
-					<View style={styles.containerButton}>
+					<View style={styles.buttonContainer}>
 						<TouchableOpacity
 							onPress={register}
-							style={styles.botaoSubmit}>
+							style={styles.btnSubmit}>
 							<Text style={styles.submitText}>Cadastrar</Text>
 						</TouchableOpacity>
 
@@ -108,10 +117,6 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
-	logo: {
-		width: 300,
-		height: 89
-	},
 	textLine: {
 		marginTop: 15,
 		alignItems: 'center',
@@ -129,6 +134,11 @@ const styles = StyleSheet.create({
 		color: '#35AAFF',
 		textDecorationLine: 'underline'
 	},
+
+	logo: {
+		width: 300,
+		height: 89
+	},
 	input: {
 		width: 300,
 		height: 50,
@@ -138,12 +148,12 @@ const styles = StyleSheet.create({
 		borderRadius: 8,
 		padding: 11
 	},
-	containerButton: {
+	buttonContainer: {
 		marginTop: 8,
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
-	botaoSubmit: {
+	btnSubmit: {
 		backgroundColor: '#35AAFF',
 		width: 300,
 		height: 50,
@@ -153,7 +163,6 @@ const styles = StyleSheet.create({
 	},
 	submitText: {
 		color: '#FFF',
-		fontSize: 18,
-		fontWeight: 'bold'
+		fontSize: 18
 	}
 })
